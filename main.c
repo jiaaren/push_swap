@@ -1,11 +1,6 @@
 #include "doubly_linked_list.h"
 #include "libpushswap.h"
 
-void	get_median(void)
-{
-	;
-}
-
 int	partition_a(t_dstack *stacks, int len)
 {
 	int		i;
@@ -173,6 +168,7 @@ int	sort_less_four_a(t_dstack *stacks, int len)
 {
 	t_dlist *tmp;
 
+	printf("Check here a\n");
 	if (len == 2)
 		sort_two_a(stacks);
 	else if (len == 3)
@@ -233,14 +229,15 @@ int	sort_three_b_noend(t_dstack *stacks)
 	int tmp2;
 	int tmp3;
 
+	printf("Check here b2\n");
 	tmp1 = stacks->b->start->content;
 	tmp2 = stacks->b->start->next->content;
 	tmp3 = stacks->b->start->next->next->content;
 	if (tmp1 < tmp2 && tmp3 < tmp1)
 		sb(stacks);
-	else if (tmp1 < tmp2 && tmp3 < tmp2)
+	else if (tmp1 > tmp2 && tmp3 < tmp2)
 		;
-	else if (tmp1 < tmp3 && tmp2 < tmp3)
+	else if (tmp1 > tmp3 && tmp2 < tmp3)
 	{
 		pa(stacks);
 		sb(stacks);
@@ -274,6 +271,7 @@ int	sort_less_four_b(t_dstack *stacks, int len)
 {
 	t_dlist *tmp;
 
+	printf("Check here b\n");
 	if (len == 2)
 		sort_two_b(stacks);
 	else if (len == 3)
@@ -331,50 +329,38 @@ int main(int argc, char *argv[])
 	int arrsize;
 	int	*arr;
 	t_dstack stacks;
+
+	int len_before;
+	int len_after;
 	if (argc == 1)
 		return (0);
 	arrsize = argc - 1;
+
+	// initialise stacks
+
 	arr = verify_input(arrsize, &argv[1]);
 	if (arr)
 	{
 		stacks = make_stacks(arr, arrsize);
+		traverse_to_median(arr, arrsize, &stacks);
 		free(arr);
-
 		quick_sort(&stacks, stacks.len, 'a');
-
-		
-		// partition_a(&stacks, stacks.len);
-
-		// partition_a(&stacks, 4); // ok- nothing, so recursion ends here
-		// print_stack(&stacks);
-		// partition_b(&stacks, 2); // ok -northing because this should return 0, to partition b now
-		// print_stack(&stacks);
-		// merge_to_b(&stacks, 0);	// 0 because nothing is pushed to a
-		// print_stack(&stacks);
-		// merge_to_a(&stacks, 2);
-		// print_stack(&stacks);
-		// partition_b(&stacks, 6);
-		// print_stack(&stacks);
-		// partition_a(&stacks, 5); // remember partition includes pivot
-		// print_stack(&stacks);
-		// partition_a(&stacks, 4);
-		// print_stack(&stacks);
-		// partition_b(&stacks, 3);
-		// print_stack(&stacks);
-		// merge_to_b(&stacks, 1);
-		// print_stack(&stacks);
-		// merge_to_a(&stacks, 3); // this is for 10
-		// print_stack(&stacks);
-		// merge_to_a(&stacks, 0); // this is for 0
-		// print_stack(&stacks);
-		// merge_to_b(&stacks, 5);
-		// print_stack(&stacks);
-		// merge_to_a(&stacks, 6);
+	
 		print_stack(&stacks);
 	
-		// printf("\n__a_back__\n");
-		// ft_printlst(stacks.a->end, 'b');
-		// printf("\n__b_back__\n");
-		// ft_printlst(stacks.b->end, 'b');
+		len_before = count_operations(stacks.operations->start); 
+		if (stacks.operations->start) {
+			while (1) 
+			{
+				scan_operation_lst(stacks.operations->start);
+				make_efficient(stacks.operations->start, stacks.len);
+				len_after = count_operations(stacks.operations->start);
+				if (len_before == len_after)
+					break ;
+				len_before = len_after;
+			}
+		}
+		// ft_printlst(stacks.operations->start, 'f');
+		print_operations(stacks.operations->start);
 	}
 }
