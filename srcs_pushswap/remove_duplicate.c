@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:20:10 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:24:09 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 19:35:12 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int	swap(int operation)
 		return (RRB);
 	if (operation == RRB)
 		return (RB);
+	return (none);
 }
 
 void	make_efficient(t_dlist *ops, int stack_len)

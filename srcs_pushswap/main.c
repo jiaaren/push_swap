@@ -163,6 +163,7 @@ int	sort_three_a_noend(t_dstack *stacks)
 		pa(stacks);
 		sa(stacks);
 	}
+	return (0);
 }
 
 int	sort_less_four_a(t_dstack *stacks, int len)
@@ -179,6 +180,7 @@ int	sort_less_four_a(t_dstack *stacks, int len)
 		else
 			sort_three_a_noend(stacks);
 	}
+	return (0);
 }
 
 void	sort_two_b(t_dstack *stacks)
@@ -264,6 +266,7 @@ int	sort_three_b_noend(t_dstack *stacks)
 		pb(stacks);
 		sb(stacks);
 	}
+	return (0);
 }
 
 int	sort_less_four_b(t_dstack *stacks, int len)
@@ -280,6 +283,7 @@ int	sort_less_four_b(t_dstack *stacks, int len)
 		else
 			sort_three_b_noend(stacks);
 	}
+	return (0);
 }
 
 void	quick_sort(t_dstack *stacks, int stack_len, char cur_stack)
@@ -352,4 +356,5 @@ int main(int argc, char *argv[])
 		print_operations(stacks.operations->start);
 		free_stacks(&stacks);
 	}
+	return (0);
 }
