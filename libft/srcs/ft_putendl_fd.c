@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 17:59:12 by jkhong            #+#    #+#             */
-/*   Updated: 2021/04/30 18:00:20 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:14:48 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
 		return ;
-	while (*s)
-		write(fd, s++, 1);
+	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }
