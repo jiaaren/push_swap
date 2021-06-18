@@ -168,7 +168,6 @@ int	sort_less_four_a(t_dstack *stacks, int len)
 {
 	t_dlist *tmp;
 
-	printf("Check here a\n");
 	if (len == 2)
 		sort_two_a(stacks);
 	else if (len == 3)
@@ -229,7 +228,6 @@ int	sort_three_b_noend(t_dstack *stacks)
 	int tmp2;
 	int tmp3;
 
-	printf("Check here b2\n");
 	tmp1 = stacks->b->start->content;
 	tmp2 = stacks->b->start->next->content;
 	tmp3 = stacks->b->start->next->next->content;
@@ -271,7 +269,6 @@ int	sort_less_four_b(t_dstack *stacks, int len)
 {
 	t_dlist *tmp;
 
-	printf("Check here b\n");
 	if (len == 2)
 		sort_two_b(stacks);
 	else if (len == 3)
