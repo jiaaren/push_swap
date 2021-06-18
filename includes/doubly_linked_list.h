@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 17:38:47 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 11:57:40 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 17:52:47 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef struct s_stack
 	t_dlist			*start;
 	t_dlist			*end;
 }				t_stack;
+
+typedef struct s_dstack
+{
+	t_stack			*a;
+	t_stack			*b;
+	int				len;
+	t_stack			*operations;
+}               t_dstack;
 
 t_dlist	*ft_dlstnew(int data);
 void	ft_dlst_first(t_dlist *new, t_stack *stack);

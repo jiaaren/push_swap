@@ -6,11 +6,12 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:43:43 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/17 18:54:29 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:06:36 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpushswap.h"
+#include "common_utils.h"
 
 int	get_median(int *arr, int arrsize)
 {

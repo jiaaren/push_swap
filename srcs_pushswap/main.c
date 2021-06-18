@@ -1,5 +1,6 @@
 #include "doubly_linked_list.h"
 #include "libpushswap.h"
+#include "common_utils.h"
 
 int	partition_a(t_dstack *stacks, int len)
 {
@@ -348,7 +349,6 @@ int main(int argc, char *argv[])
 				len_before = len_after;
 			}
 		}
-		// ft_printlst(stacks.operations->start, 'f');
 		print_operations(stacks.operations->start);
 		free_stacks(&stacks);
 	}

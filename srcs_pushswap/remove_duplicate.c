@@ -6,12 +6,13 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:20:10 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 13:24:21 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:05:29 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doubly_linked_list.h"
 #include "libpushswap.h"
+#include "common_utils.h"
 
 void	scan_swap(t_dlist *op_c, t_dlist *op_n)
 {
