@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 12:05:35 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 16:01:42 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 19:00:25 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libchecker.h"
 #include "doubly_linked_list.h"
 #include "libpushswap.h"
+#include "common_utils.h"
 
 t_list	*make_list(int fd, int *row)
 {

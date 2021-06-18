@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   median.c                                           :+:      :+:    :+:   */
+/*   get_median.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:43:43 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:06:36 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:57:51 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	get_median(int *arr, int arrsize)
 {
-	int *tmp;
+	int	*tmp;
 	int	median;
 
 	tmp = merge_sort(arr, 0, arrsize - 1);
@@ -24,13 +24,16 @@ int	get_median(int *arr, int arrsize)
 	return (median);
 }
 
-// positive return would mean to execute r 'n' times, negative return would mean execuing rr n times
+/*
+	positive return would mean to execute r 'n' times
+	negative return would mean execuing rr n times
+*/
 int	to_traverse(int *arr, int arrsize, int median)
 {
-	int index;
-	int i;
-	int r;
-	int rr;
+	int	index;
+	int	i;
+	int	r;
+	int	rr;
 
 	i = -1;
 	while (++i < arrsize)
@@ -44,9 +47,12 @@ int	to_traverse(int *arr, int arrsize, int median)
 		return (-rr);
 }
 
+/*
+	Note: no need to care about instances of 0, i.e. no movement required
+*/
 void	traverse_to_median(int *arr, int arrsize, t_dstack *stacks)
 {
-	int median;
+	int	median;
 	int	traverse;
 
 	median = get_median(arr, arrsize);
@@ -57,5 +63,4 @@ void	traverse_to_median(int *arr, int arrsize, t_dstack *stacks)
 	else if (traverse < 0)
 		while (traverse++)
 			rra(stacks);
-	// no need to care about instances of 0, i.e. no movement required
 }

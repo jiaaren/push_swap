@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:53:01 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:03:47 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:52:40 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "doubly_linked_list.h"
 
-typedef enum s_operations
+typedef enum e_operations
 {
 	none,
 	SA,
@@ -29,19 +29,30 @@ typedef enum s_operations
 	RRA,
 	RRB,
 	RRR,
-}           e_operations;
+}			t_operations;
 
-void	update_operations(t_dstack *stacks, int op);
-void    sa(t_dstack *stacks);
-void    sb(t_dstack *stacks);
-void    ss(t_dstack *stacks);
-void    pa(t_dstack *stacks);
-void    pb(t_dstack *stacks);
-void    ra(t_dstack *stacks);
-void    rb(t_dstack *stacks);
-void    rr(t_dstack *stacks);
-void    rra(t_dstack *stacks);
-void    rrb(t_dstack *stacks);
-void    rrr(t_dstack *stacks);
+// push_swap operations
+void		update_operations(t_dstack *stacks, int op);
+void		sa(t_dstack *stacks);
+void		sb(t_dstack *stacks);
+void		ss(t_dstack *stacks);
+void		pa(t_dstack *stacks);
+void		pb(t_dstack *stacks);
+void		ra(t_dstack *stacks);
+void		rb(t_dstack *stacks);
+void		rr(t_dstack *stacks);
+void		rra(t_dstack *stacks);
+void		rrb(t_dstack *stacks);
+void		rrr(t_dstack *stacks);
+
+// verification of user inptu
+long		ft_long_atoi(const char *str);
+int			*verify_input(int argc, char *argv[]);
+void		*print_error(void);
+
+// initialisation of stack
+t_dstack	make_stacks(int *arr, int arrsize);
+void		free_stacks(t_dstack *stacks);
+int			is_sorted(t_dstack *stacks);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:58:35 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/17 18:23:56 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:54:31 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ int	*merge(int *array1, int size1, int *array2, int size2)
 
 int	*merge_sort(int *array, int start, int end)
 {
-	int mid;
-	int *tmp1;
-	int *tmp2;
+	int	mid;
+	int	*tmp1;
+	int	*tmp2;
+
 	if (start == end)
 	{
 		tmp1 = malloc(sizeof(int) * 1);

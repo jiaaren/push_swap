@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ps_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:06:24 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:09:31 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:48:19 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libpushswap.h"
+#include "common_utils.h"
 #include <limits.h>
+#include <stdio.h>
 
-void	print_stack(t_dstack *stacks)
-{
-	printf("\n__a_front__\n");
-	ft_printlst(stacks->a->start, 'f');
-	printf("\n__b_front__\n");
-	ft_printlst(stacks->b->start, 'f');
-}
+/*
+	Not used for final submission
+	void	print_stack(t_dstack *stacks)
+	{
+		ft_putstr_fd("\n__a_front__\n", 1);
+		ft_printlst(stacks->a->start, 'f');
+		ft_putstr_fd("\n__b_front__\n", 1);
+		ft_printlst(stacks->b->start, 'f');
+	}
+*/
 
-int	ft_strlen(char *str)
-{
-	int len;
-
-	len = 0;
-	while (*(str + len))
-		len++;
-	return (len);
-}
-
-void	ft_putstr(char *str)
-{
-	write(1, str, ft_strlen(str));
-}
-
-int	check_int_dig(char **nums, int numlen)
+static int	check_int_dig(char **nums, int numlen)
 {
 	int		i;
 	char	*str;
@@ -58,40 +47,14 @@ int	check_int_dig(char **nums, int numlen)
 	return (1);
 }
 
-
-long	ft_long_atoi(const char *str)
-{
-	long	num;
-	int		neg;
-
-	num = 0;
-	neg = 1;
-	while (*str == ' ' || *str == '\f' || *str == '\n'
-		|| *str == '\r' || *str == '\t' || *str == '\v')
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = (num * 10) + (*str - '0');
-		str++;
-	}
-	return (num * (long)neg);
-}
-
-// link ft_atoi
-long	*make_long_arr(char **nums, int numlen)
+static long	*make_long_arr(char **nums, int numlen)
 {
 	int		i;
 	long	*tmp;
 
 	tmp = malloc(sizeof(long) * numlen);
 	i = 0;
-	while(i < numlen)
+	while (i < numlen)
 	{
 		tmp[i] = ft_long_atoi(nums[i]);
 		i++;
@@ -99,10 +62,10 @@ long	*make_long_arr(char **nums, int numlen)
 	return (tmp);
 }
 
-int *make_int_arr(long *nums, int numlen)
+static int	*make_int_arr(long *nums, int numlen)
 {
-	int i;
-	int *tmp;
+	int	i;
+	int	*tmp;
 
 	i = 0;
 	tmp = malloc(sizeof(int) * numlen);
@@ -121,10 +84,10 @@ int *make_int_arr(long *nums, int numlen)
 	return (tmp);
 }
 
-int check_dup(int *nums, int numlen)
+static int	check_dup(int *nums, int numlen)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < numlen)
@@ -144,13 +107,17 @@ int check_dup(int *nums, int numlen)
 	return (1);
 }
 
-void	*print_error(void)
-{
-	ft_putstr("Error\n");
-	return (NULL);
-}
+/*
+	Verify_input -> only function to be used externally
+	Performs the following checks
+	1. Checks argv to ensure only digits and ('-') are part of user input
+	2. Creates long array to check int overflows
+	3. Creates int array and check for duplicates
+	- function returns false/NULL if checks are not satisfied
 
-int *verify_input(int argc, char *argv[])
+	Make sure to use (argc - 1) and (&argv[1])
+*/
+int	*verify_input(int argc, char *argv[])
 {
 	long	*tmp_long;
 	int		*tmp_int;
@@ -165,5 +132,3 @@ int *verify_input(int argc, char *argv[])
 		return (print_error());
 	return (tmp_int);
 }
-
-

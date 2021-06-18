@@ -6,13 +6,14 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:20:10 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:05:29 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:24:09 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doubly_linked_list.h"
 #include "libpushswap.h"
 #include "common_utils.h"
+#include "libft.h"
 
 void	scan_swap(t_dlist *op_c, t_dlist *op_n)
 {
@@ -205,7 +206,7 @@ void	print_operations(t_dlist *ops)
 	while (ops)
 	{
 		if (ops->content != none)
-			ft_putstr((char *)ops_str[ops->content]);
+			ft_putstr_fd((char *)ops_str[ops->content], 1);
 		ops = ops->next;
 	}
 }
