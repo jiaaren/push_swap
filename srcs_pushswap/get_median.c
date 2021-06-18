@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:43:43 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:57:51 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/18 19:59:26 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	to_traverse(int *arr, int arrsize, int median)
 	int	r;
 	int	rr;
 
+	index = 0;
 	i = -1;
 	while (++i < arrsize)
 		if (arr[i] == median)
