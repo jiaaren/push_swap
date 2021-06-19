@@ -54,32 +54,6 @@ int	partition_b(t_dstack *stacks, int len)
 	return (pushed);
 }
 
-void	merge_to_a(t_dstack *stacks, int stack_b_len)
-{
-	int i;
-
-	i = 0;
-	rra(stacks);
-	while (i < stack_b_len)
-	{
-		pa(stacks);
-		i++;
-	}
-}
-
-void	merge_to_b(t_dstack *stacks, int stack_a_len)
-{
-	int i;
-
-	i = 0;
-	rrb(stacks);
-	while (i < stack_a_len)
-	{
-		pb(stacks);
-		i++;
-	}
-}
-
 void	sort_two_a(t_dstack *stacks)
 {
 	t_dlist *tmp;
@@ -93,13 +67,10 @@ void	sort_two_a(t_dstack *stacks)
 
 void	sort_three_a_end(t_dstack *stacks)
 {
-	int	tmp1;
-	int tmp2;
-	int tmp3;
+	const int	tmp1 = stacks->a->start->content;
+	const int	tmp2 = stacks->a->start->next->content;
+	const int	tmp3 = stacks->a->start->next->next->content;
 
-	tmp1 = stacks->a->start->content;
-	tmp2 = stacks->a->start->next->content;
-	tmp3 = stacks->a->start->next->next->content;
 	if (tmp1 > tmp2)
 	{
 		if (tmp3 > tmp1)	// 2 1 3
@@ -122,48 +93,39 @@ void	sort_three_a_end(t_dstack *stacks)
 	}
 }
 
-int	sort_three_a_noend(t_dstack *stacks)
+void	pb_sa_pa(t_dstack *stacks)
 {
-	int	tmp1;
-	int tmp2;
-	int tmp3;
+	pb(stacks);
+	sa(stacks);
+	pa(stacks);
+}
 
-	tmp1 = stacks->a->start->content;
-	tmp2 = stacks->a->start->next->content;
-	tmp3 = stacks->a->start->next->next->content;
+void	sort_three_a_noend(t_dstack *stacks)
+{
+	const int	tmp1 = stacks->a->start->content;
+	const int	tmp2 = stacks->a->start->next->content;
+	const int	tmp3 = stacks->a->start->next->next->content;
+
 	if (tmp1 > tmp2 && tmp3 > tmp1)
 		sa(stacks);
-	else if (tmp1 < tmp2 && tmp3 > tmp2)
-		;
 	else if (tmp1 < tmp3 && tmp2 > tmp3)
-	{
-		pb(stacks);
-		sa(stacks);
-		pa(stacks);
-	}
+		pb_sa_pa(stacks);
 	else if (tmp3 < tmp1 && tmp2 > tmp1)
 	{
-		pb(stacks);
-		sa(stacks);
-		pa(stacks);
+		pb_sa_pa(stacks);
 		sa(stacks);
 	}
 	else if (tmp2 < tmp3 && tmp1 > tmp3)
 	{
 		sa(stacks);
-		pb(stacks);
-		sa(stacks);
-		pa(stacks);
+		pb_sa_pa(stacks);
 	}
 	else if (tmp3 < tmp2 && tmp1 > tmp2)
 	{
 		sa(stacks);
-		pb(stacks);
-		sa(stacks);
-		pa(stacks);
+		pb_sa_pa(stacks);
 		sa(stacks);
 	}
-	return (0);
 }
 
 int	sort_less_four_a(t_dstack *stacks, int len)
@@ -196,13 +158,10 @@ void	sort_two_b(t_dstack *stacks)
 
 void	sort_three_b_end(t_dstack *stacks)
 {
-	int	tmp1;
-	int tmp2;
-	int tmp3;
+	const int	tmp1 = stacks->b->start->content;
+	const int	tmp2 = stacks->b->start->next->content;
+	const int	tmp3 = stacks->b->start->next->next->content;
 
-	tmp1 = stacks->b->start->content;
-	tmp2 = stacks->b->start->next->content;
-	tmp3 = stacks->b->start->next->next->content;
 	if (tmp1 < tmp2)
 	{
 		if (tmp3 < tmp1)	// 2 1 3
@@ -225,48 +184,39 @@ void	sort_three_b_end(t_dstack *stacks)
 	}
 }
 
-int	sort_three_b_noend(t_dstack *stacks)
+void	pa_sb_pb(t_dstack *stacks)
 {
-	int	tmp1;
-	int tmp2;
-	int tmp3;
+	pa(stacks);
+	sb(stacks);
+	pb(stacks);
+}
 
-	tmp1 = stacks->b->start->content;
-	tmp2 = stacks->b->start->next->content;
-	tmp3 = stacks->b->start->next->next->content;
+void	sort_three_b_noend(t_dstack *stacks)
+{
+	const int	tmp1 = stacks->b->start->content;
+	const int	tmp2 = stacks->b->start->next->content;
+	const int	tmp3 = stacks->b->start->next->next->content;
+
 	if (tmp1 < tmp2 && tmp3 < tmp1)
 		sb(stacks);
-	else if (tmp1 > tmp2 && tmp3 < tmp2)
-		;
 	else if (tmp1 > tmp3 && tmp2 < tmp3)
-	{
-		pa(stacks);
-		sb(stacks);
-		pb(stacks);
-	}
+		pa_sb_pb(stacks);
 	else if (tmp3 > tmp1 && tmp2 < tmp1)
 	{
-		pa(stacks);
-		sb(stacks);
-		pb(stacks);
+		pa_sb_pb(stacks);
 		sb(stacks);
 	}
 	else if (tmp2 > tmp3 && tmp1 < tmp3)
 	{
 		sb(stacks);
-		pa(stacks);
-		sb(stacks);
-		pb(stacks);
+		pa_sb_pb(stacks);
 	}
 	else if (tmp3 > tmp2 && tmp1 < tmp2)
 	{
 		sb(stacks);
-		pa(stacks);
-		sb(stacks);
-		pb(stacks);
+		pa_sb_pb(stacks);
 		sb(stacks);
 	}
-	return (0);
 }
 
 int	sort_less_four_b(t_dstack *stacks, int len)
@@ -286,9 +236,35 @@ int	sort_less_four_b(t_dstack *stacks, int len)
 	return (0);
 }
 
+void	merge_to_a(t_dstack *stacks, int stack_b_len)
+{
+	int i;
+
+	i = 0;
+	rra(stacks);
+	while (i < stack_b_len)
+	{
+		pa(stacks);
+		i++;
+	}
+}
+
+void	merge_to_b(t_dstack *stacks, int stack_a_len)
+{
+	int i;
+
+	i = 0;
+	rrb(stacks);
+	while (i < stack_a_len)
+	{
+		pb(stacks);
+		i++;
+	}
+}
+
 void	quick_sort(t_dstack *stacks, int stack_len, char cur_stack)
 {
-	int pushed_opposite;
+	int pushed;
 
 	if (stack_len <= 1)
 		return ;
@@ -298,22 +274,20 @@ void	quick_sort(t_dstack *stacks, int stack_len, char cur_stack)
 			sort_less_four_a(stacks, stack_len);
 		else
 			sort_less_four_b(stacks, stack_len);
-		return ;
 	}
-	if (cur_stack == 'a')
+	else if (cur_stack == 'a')
 	{
-		pushed_opposite = partition_a(stacks, stack_len);
-		quick_sort(stacks, stack_len - pushed_opposite - 1, 'a');
-		quick_sort(stacks, pushed_opposite, 'b');
-		merge_to_a(stacks, pushed_opposite);
+		pushed = partition_a(stacks, stack_len);
+		quick_sort(stacks, stack_len - pushed - 1, 'a');
+		quick_sort(stacks, pushed, 'b');
+		merge_to_a(stacks, pushed);
 	}
 	else
 	{
-		pushed_opposite = partition_b(stacks, stack_len);
-		quick_sort(stacks, stack_len - pushed_opposite - 1, 'b');
-		quick_sort(stacks, pushed_opposite, 'a');
-		merge_to_b(stacks, pushed_opposite);
-
+		pushed = partition_b(stacks, stack_len);
+		quick_sort(stacks, stack_len - pushed - 1, 'b');
+		quick_sort(stacks, pushed, 'a');
+		merge_to_b(stacks, pushed);
 	}
 }	
 
