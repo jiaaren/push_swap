@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:04:02 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 14:58:19 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 15:21:42 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 # define LIBPUSHSWAP_H
 
 # include <unistd.h>
+# include <stdbool.h>
 # include "doubly_linked_list.h"
 
+typedef struct	s_efficient
+{
+	int		a_len;
+
+} 				t_efficient;
+
+
 void		scan_operation_lst(t_dlist *ops);
-void		print_operations(t_dlist *ops);
-int			count_operations(t_dlist *ops);
 
 int			*merge_sort(int *array, int start, int end);
 int			get_median(int *arr, int arrsize);

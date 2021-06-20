@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:53:01 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:52:40 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 15:05:29 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void		rr(t_dstack *stacks);
 void		rra(t_dstack *stacks);
 void		rrb(t_dstack *stacks);
 void		rrr(t_dstack *stacks);
+
+// other push_swap operation utils
+void		print_operations(t_dlist *ops);
+int			count_operations(t_dlist *ops);
 
 // verification of user inptu
 long		ft_long_atoi(const char *str);
