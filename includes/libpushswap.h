@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:04:02 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 15:21:42 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 15:25:11 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@
 typedef struct	s_efficient
 {
 	int		a_len;
-
+	int		b_len;
+	bool	to_count;
+	int		count;
+	int		to_swap;
+	int		operation;
 } 				t_efficient;
 
 
