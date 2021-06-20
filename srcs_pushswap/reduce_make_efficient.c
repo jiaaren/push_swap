@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:20:10 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 16:22:53 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 19:45:21 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ static int	swap(int operation)
 
 // else if (ops->content == RA || ops->content == RB || 
 // 	ops->content == RB || ops->content == RRB || ops->content == none)
-// 	;
+// this assumes that i will never have a zero len pa/pb
 
 static void	update_count(t_dlist *ops, t_efficient *x)
 {
-	// this assumes that i will never have a zero len pa/pb
 	if (ops->content == RA || ops->content == RRA)
 	{
 		x->count = count_operation(ops, ops->content);
@@ -79,7 +78,7 @@ static void	swap_operations(t_dlist *ops, t_efficient *x)
 		ops->content = none;
 	x->count--;
 	if (!x->count)
-		x->to_count = true;	
+		x->to_count = true;
 }
 
 /*
@@ -95,7 +94,7 @@ static void	swap_operations(t_dlist *ops, t_efficient *x)
 */
 void	make_efficient(t_dlist *ops, int stack_len)
 {
-	static t_efficient x;
+	static t_efficient	x;
 
 	x.a_len = stack_len;
 	x.to_count = true;

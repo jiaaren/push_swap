@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 17:38:47 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 15:21:48 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 19:29:35 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define DOUBLY_LINKED_LIST_H
 
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_dlist
 {

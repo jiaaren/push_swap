@@ -6,7 +6,7 @@
 #    By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 11:30:38 by jkhong            #+#    #+#              #
-#    Updated: 2021/06/20 16:47:07 by jkhong           ###   ########.fr        #
+#    Updated: 2021/06/20 20:16:03 by jkhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,16 @@ NAME		=	push_swap
 
 all:		$(NAME)
 
-$(NAME): 	$(OBJS_PS) $(OBJS_COM) 
+libft:
+			make -C ../libft
+
+clean_libft:
+			make clean -C ../libft
+
+$(NAME): 	libft $(OBJS_PS) $(OBJS_COM) 
 			$(CC) $(CFLAGS) $(HEADER) -o $(NAME) $(OBJS_COM) $(OBJS_PS) $(LIB) 
 
-clean:
+clean:		clean_libft
 			rm -f $(OBJS_COM) $(OBJS_PS)
 
 fclean:		clean
@@ -36,4 +42,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re libft clean_libft

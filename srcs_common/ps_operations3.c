@@ -6,27 +6,13 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:49:42 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 17:00:57 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 19:34:22 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common_utils.h"
 #include "libft.h"
 #include <unistd.h>
-
-void	rra(t_dstack *stacks)
-{
-	if (stacks->a)
-		ft_dlstadd_front(ft_dlstpop_back(stacks->a), stacks->a);
-	update_operations(stacks, RRA);
-}
-
-void	rrb(t_dstack *stacks)
-{
-	if (stacks->b)
-		ft_dlstadd_front(ft_dlstpop_back(stacks->b), stacks->b);
-	update_operations(stacks, RRB);
-}
 
 void	rrr(t_dstack *stacks)
 {
@@ -37,7 +23,15 @@ void	rrr(t_dstack *stacks)
 	update_operations(stacks, RRR);
 }
 
-void	output_print(char *buffer, int *buff_filled)
+void	update_operations(t_dstack *stacks, int op)
+{
+	t_dlist	*new;
+
+	new = ft_dlstnew(op);
+	ft_dlstadd_back(new, stacks->operations);
+}
+
+static void	output_print(char *buffer, int *buff_filled)
 {
 	if (write(1, buffer, *buff_filled))
 		*buff_filled = 0;

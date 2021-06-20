@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 12:05:35 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 19:00:25 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 20:04:07 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libchecker.h"
 #include "doubly_linked_list.h"
-#include "libpushswap.h"
+#include "libft.h"
 #include "common_utils.h"
+#include "libchecker.h"
 
+/*
+	- interesting to have modified this, 
+	original version results in n2 time complexity
+	- need if statement to check if last != NULL
+*/
 t_list	*make_list(int fd, int *row)
 {
 	char	*tmp;
@@ -26,14 +30,13 @@ t_list	*make_list(int fd, int *row)
 	lst = NULL;
 	last = lst;
 	*row = 0;
-	// interesting to have modified this, original version results in n2 time complexity
 	while (get_next_line(fd, &tmp) > 0)
 	{
 		new = ft_lstnew(tmp);
 		if (!last)
 			ft_lstadd_back(&lst, new);
 		else
-			ft_lstadd_back(&last, new); // update to keep track of last?
+			ft_lstadd_back(&last, new);
 		last = new;
 		(*row)++;
 	}
@@ -41,16 +44,17 @@ t_list	*make_list(int fd, int *row)
 	return (lst);
 }
 
+// fix ftstrncmp to 4 because rrr has NUL as 4th end
 int	return_index(char *operation)
 {
-	const char* operations[] = {"sa", "sb", "ss", "pa", "pb", "ra", 
-			"rb", "rr", "rra", "rrb", "rrr"};
-	int index;
+	const char	*operations[]
+	= {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"};
+	int			index;
 
 	index = 0;
 	while (index < OPERATION_NUM)
 	{
-		if (ft_strncmp(operation, operations[index], 4) == 0) // 4 because rrr has NUL as 4th end
+		if (ft_strncmp(operation, operations[index], 4) == 0)
 			return (index);
 		index++;
 	}
@@ -59,8 +63,9 @@ int	return_index(char *operation)
 
 int	cycle_operation(t_list *lst, t_dstack *stacks)
 {
-	static void (*f[]) (t_dstack *) = {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
-	int	index;
+	static	void	(*f[])(t_dstack *)
+	= {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
+	int				index;
 
 	while (lst)
 	{
@@ -79,15 +84,15 @@ int	cycle_operation(t_list *lst, t_dstack *stacks)
 void	apply_operation(t_dstack *stacks)
 {
 	t_list	*lst;
-	int		operation_count; // unnecessary
+	int		operation_count;
 
 	lst = make_list(0, &operation_count);
 	if (cycle_operation(lst, stacks) != -1)
 	{
 		if (is_sorted(stacks))
-			ft_putstr("OK\n");
+			ft_putstr_fd("OK\n", 1);
 		else
-			ft_putstr("KO\n");
+			ft_putstr_fd("KO\n", 1);
 	}
 	ft_lstclear(&lst, free);
 }

@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:31 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 14:57:02 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 19:47:40 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	sort_two_b(t_dstack *stacks)
 {
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	tmp = stacks->b->start;
 	if (tmp->content < tmp->next->content)
@@ -32,16 +32,16 @@ static void	sort_three_b_end(t_dstack *stacks)
 
 	if (tmp1 < tmp2)
 	{
-		if (tmp3 < tmp1)	// 2 1 3
+		if (tmp3 < tmp1)
 			sb(stacks);
-		else				// 3 1 2
+		else
 			rb(stacks);
-		if (tmp2 < tmp3) // 3 2 1
+		if (tmp2 < tmp3)
 			sb(stacks);
 	}
 	else
 	{
-		if (tmp1 > tmp2 && tmp1 < tmp3) // 2 3 1
+		if (tmp1 > tmp2 && tmp1 < tmp3)
 			rrb(stacks);
 		else if (tmp3 > tmp2 && tmp3 < tmp1)
 		{
@@ -89,7 +89,7 @@ static void	sort_three_b_noend(t_dstack *stacks)
 
 int	sort_less_four_b(t_dstack *stacks, int len)
 {
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	if (len == 2)
 		sort_two_b(stacks);

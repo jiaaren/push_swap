@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 14:57:35 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 19:48:55 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	partition_a(t_dstack *stacks, int len)
 
 	i = 0;
 	pushed = 0;
-	// pivot probably can choose a median number instead
 	pivot = stacks->a->start->content;
 	while (i++ < len)
 	{
@@ -48,7 +47,6 @@ static int	partition_b(t_dstack *stacks, int len)
 
 	i = 0;
 	pushed = 0;
-	// pivot probably can choose a median number instead
 	pivot = stacks->b->start->content;
 	while (i++ < len)
 	{
@@ -66,10 +64,9 @@ static int	partition_b(t_dstack *stacks, int len)
 	return (pushed);
 }
 
-
 static void	merge_to_a(t_dstack *stacks, int stack_b_len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	rra(stacks);
@@ -82,7 +79,7 @@ static void	merge_to_a(t_dstack *stacks, int stack_b_len)
 
 static void	merge_to_b(t_dstack *stacks, int stack_a_len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	rrb(stacks);
@@ -95,7 +92,7 @@ static void	merge_to_b(t_dstack *stacks, int stack_a_len)
 
 void	quick_sort(t_dstack *stacks, int stack_len, char cur_stack)
 {
-	int pushed;
+	int	pushed;
 
 	if (stack_len <= 1)
 		return ;
