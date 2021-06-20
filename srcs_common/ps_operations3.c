@@ -6,12 +6,13 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:49:42 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 15:04:40 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 17:00:57 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common_utils.h"
 #include "libft.h"
+#include <unistd.h>
 
 void	rra(t_dstack *stacks)
 {
@@ -36,22 +37,43 @@ void	rrr(t_dstack *stacks)
 	update_operations(stacks, RRR);
 }
 
+void	output_print(char *buffer, int *buff_filled)
+{
+	if (write(1, buffer, *buff_filled))
+		*buff_filled = 0;
+}
+
 void	print_operations(t_dlist *ops)
 {
-	const char *ops_str[] = {"none", "sa\n", "sb\n", "ss\n", "pa\n", "pb\n", 
+	const char	*ops_str[] = {"none", "sa\n", "sb\n", "ss\n", "pa\n", "pb\n",
 						"ra\n", "rb\n", "rr\n", "rra\n", "rrb\n", "rrr\n"};
+	char		buffer[10000];
+	int			buff_filled;
+	char		*tmp;
 
+	buff_filled = 0;
 	while (ops)
 	{
 		if (ops->content != none)
-			ft_putstr_fd((char *)ops_str[ops->content], 1);
+		{
+			tmp = (char *)ops_str[ops->content];
+			while (*tmp)
+			{
+				buffer[buff_filled] = *tmp++;
+				buff_filled++;
+			}
+		}
+		if (buff_filled > 9500)
+			output_print(buffer, &buff_filled);
 		ops = ops->next;
 	}
+	if (buff_filled)
+		output_print(buffer, &buff_filled);
 }
 
 int	count_operations(t_dlist *ops)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (ops)
