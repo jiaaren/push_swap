@@ -6,13 +6,36 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 19:48:55 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 00:15:55 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doubly_linked_list.h"
 #include "common_utils.h"
 #include "libpushswap.h"
+
+static int	give_median(t_dlist *lst, int len)
+{
+	int	*tmp;
+	int	*tmp_sorted;
+	int i;
+	int	median;
+
+	tmp = malloc(sizeof(int) * len);
+	i = 0;
+	while (i < len)
+	{
+		tmp[i] = lst->content;
+		lst = lst->next;
+		i++;
+	}
+	tmp_sorted = merge_sort(tmp, 0, len - 1);
+	median = tmp_sorted[(len - 1) / 2];
+	free(tmp_sorted);
+	free(tmp);
+	return (median);
+}
+
 
 static int	partition_a(t_dstack *stacks, int len)
 {
@@ -22,15 +45,20 @@ static int	partition_a(t_dstack *stacks, int len)
 
 	i = 0;
 	pushed = 0;
-	pivot = stacks->a->start->content;
+	pivot = give_median(stacks->a->start, len);
 	while (i++ < len)
 	{
-		if (stacks->a->start->content >= pivot)
+		if (stacks->a->start->content > pivot)
 			ra(stacks);
-		else
+		else if (stacks->a->start->content < pivot)
 		{
 			pb(stacks);
 			pushed++;
+		}
+		else
+		{
+			pb(stacks);
+			rb(stacks);
 		}
 	}
 	i = 0;
@@ -47,15 +75,20 @@ static int	partition_b(t_dstack *stacks, int len)
 
 	i = 0;
 	pushed = 0;
-	pivot = stacks->b->start->content;
+	pivot = give_median(stacks->b->start, len);
 	while (i++ < len)
 	{
-		if (stacks->b->start->content <= pivot)
+		if (stacks->b->start->content < pivot)
 			rb(stacks);
-		else
+		else if (stacks->b->start->content > pivot)
 		{
 			pa(stacks);
 			pushed++;
+		}
+		else
+		{
+			pa(stacks);
+			ra(stacks);
 		}
 	}
 	i = 0;
@@ -69,11 +102,12 @@ static void	merge_to_a(t_dstack *stacks, int stack_b_len)
 	int	i;
 
 	i = 0;
-	rra(stacks);
+	rrb(stacks);
+	pa(stacks);
 	while (i < stack_b_len)
 	{
 		pa(stacks);
-		i++;
+	i++;
 	}
 }
 
@@ -82,7 +116,8 @@ static void	merge_to_b(t_dstack *stacks, int stack_a_len)
 	int	i;
 
 	i = 0;
-	rrb(stacks);
+	rra(stacks);
+	pb(stacks);
 	while (i < stack_a_len)
 	{
 		pb(stacks);
