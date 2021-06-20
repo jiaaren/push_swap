@@ -21,7 +21,7 @@ static void	sort_stack(int *arr, int arrsize)
 	int			len_after;
 
 	stacks = make_stacks(arr, arrsize);
-	traverse_to_median(arr, arrsize, &stacks);
+	//traverse_to_median(arr, arrsize, &stacks);
 	free(arr);
 	quick_sort(&stacks, stacks.len, 'a');
 	len_before = count_operations(stacks.operations->start);

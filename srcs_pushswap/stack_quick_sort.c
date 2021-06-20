@@ -30,7 +30,7 @@ static int	give_median(t_dlist *lst, int len)
 		i++;
 	}
 	tmp_sorted = merge_sort(tmp, 0, len - 1);
-	median = tmp_sorted[(len - 1) / 2];
+	median = tmp_sorted[len / 2];
 	free(tmp_sorted);
 	free(tmp);
 	return (median);
