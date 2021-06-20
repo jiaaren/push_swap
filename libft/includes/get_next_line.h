@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:17:55 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 18:50:59 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/20 20:23:15 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 40
+# endif
+
+# ifndef OPEN_MAX
 #  define OPEN_MAX 1024
 # endif
 
