@@ -21,7 +21,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 NAME		=	checker
 
 %.o: %.c
-			$(CC) $(CFLAGS) -c $(LIB) $(HEADER)  -O3 $< -o ${<:.c=.o}
+			$(CC) $(CFLAGS) -c $(HEADER)  -O3 $< -o ${<:.c=.o}
 
 all:		$(NAME)
 
@@ -32,13 +32,13 @@ clean_libft:
 			make clean -C ../libft
 
 $(NAME): 	libft $(OBJS_CHECK) $(OBJS_COM) 
-			$(CC) $(CFLAGS) $(HEADER) -o $(NAME) $(OBJS_COM) $(OBJS_CHECK) $(LIB) 
+			$(CC) $(CFLAGS) -o $(NAME) $(OBJS_COM) $(OBJS_CHECK) $(LIB) 
 
 clean:		clean_libft
 			rm -f $(OBJS_COM) $(OBJS_CHECK)
 
 fclean:		clean
-			rm -f $(NAME)
+			rm -f $(NAME) ../libft/libft.a
 
 re:			fclean all
 
