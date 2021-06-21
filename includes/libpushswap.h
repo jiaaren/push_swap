@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:04:02 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 20:29:31 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 21:17:44 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 # include "doubly_linked_list.h"
 
-typedef struct	s_efficient
+typedef struct s_efficient
 {
 	int		a_len;
 	int		b_len;
@@ -25,8 +25,7 @@ typedef struct	s_efficient
 	int		count;
 	int		to_swap;
 	int		operation;
-} 				t_efficient;
-
+}				t_efficient;
 
 void		scan_operation_lst(t_dlist *ops);
 
@@ -34,6 +33,7 @@ int			*merge_sort(int *array, int start, int end);
 int			get_median(int *arr, int arrsize);
 int			to_traverse(int *arr, int arrsize, int median);
 void		traverse_to_median(int *arr, int arrsize, t_dstack *stacks);
+int			give_median(t_dlist *lst, int len);
 
 void		make_efficient(t_dlist *ops, int stack_len);
 void		print_stack(t_dstack *stacks);

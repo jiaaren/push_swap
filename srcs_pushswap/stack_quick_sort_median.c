@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 20:33:45 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 21:26:02 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,6 @@
 #include "common_utils.h"
 #include "libpushswap.h"
 
-static int	give_median(t_dlist *lst, int len)
-{
-	int	*tmp;
-	int	*tmp_sorted;
-	int i;
-	int	median;
-
-	tmp = malloc(sizeof(int) * len);
-	i = 0;
-	while (i < len)
-	{
-		tmp[i] = lst->content;
-		lst = lst->next;
-		i++;
-	}
-	tmp_sorted = merge_sort(tmp, 0, len - 1);
-	median = tmp_sorted[(len - 1) / 2];
-	free(tmp_sorted);
-	free(tmp);
-	return (median);
-}
 /*
 	else
 	{
@@ -45,16 +24,14 @@ static int	give_median(t_dlist *lst, int len)
 			rb(stacks);
 	}
 */
-
 static int	partition_a(t_dstack *stacks, int len)
 {
-	int		i;
-	int		pivot;
-	int		pushed;
+	int			i;
+	int			pushed;
+	const int	pivot = give_median(stacks->a->start, len);
 
 	i = 0;
 	pushed = 0;
-	pivot = give_median(stacks->a->start, len);
 	while (i++ < len)
 	{
 		if (stacks->a->start->content > pivot)
@@ -88,13 +65,12 @@ static int	partition_a(t_dstack *stacks, int len)
 */
 static int	partition_b(t_dstack *stacks, int len)
 {
-	int		i;
-	int		pivot;
-	int		pushed;
+	int			i;
+	int			pushed;
+	const int	pivot = give_median(stacks->b->start, len);
 
 	i = 0;
 	pushed = 0;
-	pivot = give_median(stacks->b->start, len);
 	while (i++ < len)
 	{
 		if (stacks->b->start->content < pivot)

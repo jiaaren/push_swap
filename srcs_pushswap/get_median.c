@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:43:43 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 19:59:26 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 21:11:10 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,27 @@ void	traverse_to_median(int *arr, int arrsize, t_dstack *stacks)
 	else if (traverse < 0)
 		while (traverse++)
 			rra(stacks);
+}
+
+// for stack_quick_sort_median
+int	give_median(t_dlist *lst, int len)
+{
+	int	*tmp;
+	int	*tmp_sorted;
+	int	i;
+	int	median;
+
+	tmp = malloc(sizeof(int) * len);
+	i = 0;
+	while (i < len)
+	{
+		tmp[i] = lst->content;
+		lst = lst->next;
+		i++;
+	}
+	tmp_sorted = merge_sort(tmp, 0, len - 1);
+	median = tmp_sorted[(len - 1) / 2];
+	free(tmp_sorted);
+	free(tmp);
+	return (median);
 }

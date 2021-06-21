@@ -6,11 +6,11 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:53:01 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 15:05:29 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 21:25:01 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	COMMON_UTILS_H
+#ifndef COMMON_UTILS_H
 # define COMMON_UTILS_H
 
 # include "doubly_linked_list.h"
