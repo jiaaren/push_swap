@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:04:02 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 15:25:11 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 20:29:31 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		print_stack(t_dstack *stacks);
 
 int			sort_less_four_b(t_dstack *stacks, int len);
 int			sort_less_four_a(t_dstack *stacks, int len);
-void		quick_sort(t_dstack *stacks, int stack_len, char cur_stack);
+void		quick_sort_simple(t_dstack *stacks, int stack_len, char cur_stack);
+void		quick_sort_median(t_dstack *stacks, int stack_len, char cur_stack);
 
 #endif

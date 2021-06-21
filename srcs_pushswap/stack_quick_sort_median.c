@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_quick_sort.c                                 :+:      :+:    :+:   */
+/*   stack_quick_sort_median.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 10:07:09 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 20:33:45 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ static void	merge_to_b(t_dstack *stacks, int stack_a_len)
 	}
 }
 
-void	quick_sort(t_dstack *stacks, int stack_len, char cur_stack)
+void	quick_sort_median(t_dstack *stacks, int stack_len, char cur_stack)
 {
 	int	pushed;
 
@@ -160,15 +160,15 @@ void	quick_sort(t_dstack *stacks, int stack_len, char cur_stack)
 	else if (cur_stack == 'a')
 	{
 		pushed = partition_a(stacks, stack_len);
-		quick_sort(stacks, stack_len - pushed - 1, 'a');
-		quick_sort(stacks, pushed, 'b');
+		quick_sort_median(stacks, stack_len - pushed - 1, 'a');
+		quick_sort_median(stacks, pushed, 'b');
 		merge_to_a(stacks, pushed);
 	}
 	else
 	{
 		pushed = partition_b(stacks, stack_len);
-		quick_sort(stacks, stack_len - pushed - 1, 'b');
-		quick_sort(stacks, pushed, 'a');
+		quick_sort_median(stacks, stack_len - pushed - 1, 'b');
+		quick_sort_median(stacks, pushed, 'a');
 		merge_to_b(stacks, pushed);
 	}
 }	
