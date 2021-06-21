@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 00:15:55 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 09:52:10 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,23 @@ static int	give_median(t_dlist *lst, int len)
 		i++;
 	}
 	tmp_sorted = merge_sort(tmp, 0, len - 1);
-	median = tmp_sorted[len / 2];
+	median = tmp_sorted[(len - 1) / 2];
 	free(tmp_sorted);
 	free(tmp);
 	return (median);
 }
-
+/*
+	else if (stacks->a->start->content < pivot)
+	{
+		pb(stacks);
+		pushed++;
+	}
+	else
+	{
+		pb(stacks);
+		rb(stacks);
+	}
+*/
 
 static int	partition_a(t_dstack *stacks, int len)
 {
@@ -50,15 +61,13 @@ static int	partition_a(t_dstack *stacks, int len)
 	{
 		if (stacks->a->start->content > pivot)
 			ra(stacks);
-		else if (stacks->a->start->content < pivot)
-		{
-			pb(stacks);
-			pushed++;
-		}
 		else
 		{
 			pb(stacks);
-			rb(stacks);
+			if (stacks->a->start->content < pivot)
+				pushed++;
+			else
+				rb(stacks);
 		}
 	}
 	i = 0;
@@ -67,6 +76,18 @@ static int	partition_a(t_dstack *stacks, int len)
 	return (pushed);
 }
 
+/*
+	else if (stacks->b->start->content > pivot)
+	{
+		pa(stacks);
+		pushed++;
+	}
+	else
+	{
+		pa(stacks);
+		ra(stacks);
+	}
+*/
 static int	partition_b(t_dstack *stacks, int len)
 {
 	int		i;
@@ -80,15 +101,13 @@ static int	partition_b(t_dstack *stacks, int len)
 	{
 		if (stacks->b->start->content < pivot)
 			rb(stacks);
-		else if (stacks->b->start->content > pivot)
-		{
-			pa(stacks);
-			pushed++;
-		}
 		else
 		{
 			pa(stacks);
-			ra(stacks);
+			if (stacks->b->start->content > pivot)
+				pushed++;
+			else
+				ra(stacks);
 		}
 	}
 	i = 0;
@@ -107,7 +126,7 @@ static void	merge_to_a(t_dstack *stacks, int stack_b_len)
 	while (i < stack_b_len)
 	{
 		pa(stacks);
-	i++;
+		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:20:10 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 19:45:21 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 09:49:00 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libpushswap.h"
 #include "common_utils.h"
 
-static int	count_operation(t_dlist *ops, int operation)
+static int	count_operation(t_dlist *ops, int operation, int len)
 {
 	int	count;
 
@@ -24,6 +24,8 @@ static int	count_operation(t_dlist *ops, int operation)
 		if (ops->content != operation)
 			break ;
 		count++;
+		if (count > len)
+			return (len);
 		ops = ops->next;
 	}
 	return (count);
@@ -45,12 +47,12 @@ static int	swap(int operation)
 // else if (ops->content == RA || ops->content == RB || 
 // 	ops->content == RB || ops->content == RRB || ops->content == none)
 // this assumes that i will never have a zero len pa/pb
-
+// have to limit x->count to x->a/b_len, or else it will overflow
 static void	update_count(t_dlist *ops, t_efficient *x)
 {
 	if (ops->content == RA || ops->content == RRA)
 	{
-		x->count = count_operation(ops, ops->content);
+		x->count = count_operation(ops, ops->content, x->a_len);
 		if (x->count > (x->a_len / 2))
 		{
 			x->to_count = false;
@@ -60,7 +62,7 @@ static void	update_count(t_dlist *ops, t_efficient *x)
 	}
 	else if (ops->content == RB || ops->content == RRB)
 	{
-		x->count = count_operation(ops, ops->content);
+		x->count = count_operation(ops, ops->content, x->b_len);
 		if (x->count > (x->b_len / 2))
 		{
 			x->to_count = 0;
@@ -72,8 +74,11 @@ static void	update_count(t_dlist *ops, t_efficient *x)
 
 static void	swap_operations(t_dlist *ops, t_efficient *x)
 {
-	if (x->to_swap-- > 0)
+	if (x->to_swap > 0)
+	{
 		ops->content = swap(x->operation);
+		x->to_swap--;
+	}
 	else if (x->to_swap <= 0 && x->count)
 		ops->content = none;
 	x->count--;
