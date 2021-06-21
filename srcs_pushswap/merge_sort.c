@@ -6,14 +6,14 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 16:58:35 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/18 18:54:31 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 00:39:11 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int	*merge(int *array1, int size1, int *array2, int size2)
+static int	*merge(int *array1, int size1, int *array2, int size2)
 {
 	int	*tmp;
 	int	tmp_i;

@@ -6,13 +6,13 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:06:24 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 16:58:25 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 00:42:44 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "common_utils.h"
+#include "libft.h"
 #include <limits.h>
-#include <stdio.h>
 
 /*
 	Not used for final submission

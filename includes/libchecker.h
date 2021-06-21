@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 12:06:18 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 21:25:55 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 00:36:45 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBCHECKER_H
 
 # define OPERATION_NUM 11
-# include <stdio.h>
 # include "libft.h"
 # include "libpushswap.h"
 # include "libchecker.h"

@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 12:05:35 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 20:04:07 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 00:36:20 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_list	*make_list(int fd, int *row)
 }
 
 // fix ftstrncmp to 4 because rrr has NUL as 4th end
-int	return_index(char *operation)
+static int	return_index(char *operation)
 {
 	const char	*operations[]
 	= {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"};
@@ -61,7 +61,7 @@ int	return_index(char *operation)
 	return (-1);
 }
 
-int	cycle_operation(t_list *lst, t_dstack *stacks)
+static int	cycle_operation(t_list *lst, t_dstack *stacks)
 {
 	static	void	(*f[])(t_dstack *)
 	= {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};

@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:53:01 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 21:25:01 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 00:43:29 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		rrr(t_dstack *stacks);
 void		print_operations(t_dlist *ops);
 int			count_operations(t_dlist *ops);
 
-// verification of user inptu
+// verification of user inputs
 long		ft_long_atoi(const char *str);
 int			*verify_input(int argc, char *argv[]);
 void		*print_error(void);
@@ -58,5 +58,8 @@ void		*print_error(void);
 t_dstack	make_stacks(int *arr, int arrsize);
 void		free_stacks(t_dstack *stacks);
 int			is_sorted(t_dstack *stacks);
+
+// Other utils
+void		print_stack(t_dstack *stacks);
 
 #endif
