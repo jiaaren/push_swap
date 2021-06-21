@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 09:52:10 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 10:07:09 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ static int	give_median(t_dlist *lst, int len)
 	return (median);
 }
 /*
-	else if (stacks->a->start->content < pivot)
-	{
-		pb(stacks);
-		pushed++;
-	}
 	else
 	{
 		pb(stacks);
-		rb(stacks);
+		if (stacks->a->start->content < pivot)
+			pushed++;
+		else
+			rb(stacks);
 	}
 */
 
@@ -61,13 +59,15 @@ static int	partition_a(t_dstack *stacks, int len)
 	{
 		if (stacks->a->start->content > pivot)
 			ra(stacks);
+		else if (stacks->a->start->content < pivot)
+		{
+			pb(stacks);
+			pushed++;
+		}
 		else
 		{
 			pb(stacks);
-			if (stacks->a->start->content < pivot)
-				pushed++;
-			else
-				rb(stacks);
+			rb(stacks);
 		}
 	}
 	i = 0;
@@ -77,15 +77,13 @@ static int	partition_a(t_dstack *stacks, int len)
 }
 
 /*
-	else if (stacks->b->start->content > pivot)
-	{
-		pa(stacks);
-		pushed++;
-	}
 	else
 	{
 		pa(stacks);
-		ra(stacks);
+		if (stacks->b->start->content > pivot)
+			pushed++;
+		else
+			ra(stacks);
 	}
 */
 static int	partition_b(t_dstack *stacks, int len)
@@ -101,13 +99,15 @@ static int	partition_b(t_dstack *stacks, int len)
 	{
 		if (stacks->b->start->content < pivot)
 			rb(stacks);
+		else if (stacks->b->start->content > pivot)
+		{
+			pa(stacks);
+			pushed++;
+		}
 		else
 		{
 			pa(stacks);
-			if (stacks->b->start->content > pivot)
-				pushed++;
-			else
-				ra(stacks);
+			ra(stacks);
 		}
 	}
 	i = 0;
