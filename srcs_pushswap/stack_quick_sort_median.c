@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 21:26:02 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:42:09 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 #include "common_utils.h"
 #include "libpushswap.h"
 
-/*
-	else
-	{
-		pb(stacks);
-		if (stacks->a->start->content < pivot)
-			pushed++;
-		else
-			rb(stacks);
-	}
-*/
 static int	partition_a(t_dstack *stacks, int len)
 {
 	int			i;
@@ -53,16 +43,6 @@ static int	partition_a(t_dstack *stacks, int len)
 	return (pushed);
 }
 
-/*
-	else
-	{
-		pa(stacks);
-		if (stacks->b->start->content > pivot)
-			pushed++;
-		else
-			ra(stacks);
-	}
-*/
 static int	partition_b(t_dstack *stacks, int len)
 {
 	int			i;

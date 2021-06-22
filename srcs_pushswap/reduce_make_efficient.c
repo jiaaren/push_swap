@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:20:10 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/21 09:49:00 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:39:51 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static int	swap(int operation)
 	return (none);
 }
 
-// else if (ops->content == RA || ops->content == RB || 
-// 	ops->content == RB || ops->content == RRB || ops->content == none)
 // this assumes that i will never have a zero len pa/pb
 // have to limit x->count to x->a/b_len, or else it will overflow
 static void	update_count(t_dlist *ops, t_efficient *x)

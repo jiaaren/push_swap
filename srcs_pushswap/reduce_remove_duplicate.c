@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 15:08:42 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 19:55:20 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:41:20 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ static void	scan_swap(t_dlist *op_c, t_dlist *op_n)
 		op_n->content = none;
 	}
 }
-
-// static void	scan_push(t_dlist *op_c, t_dlist *op_n)
-// {
-// 	if ((op_c->content == PA && op_n->content == PB) || 
-// 		(op_c->content == PB && op_n->content == PA))
-// 	{
-// 		op_c->content = none;
-// 		op_n->content = none;
-// 	}
-// }
 
 static void	scan_overlap(t_dlist *op_c, t_dlist *op_n,
 		int opp_operation, int swap)
@@ -81,7 +71,6 @@ static void	scan_overlap_push(t_dlist *op_c, t_dlist *op_n, int opp_operation)
 }
 
 // until list - 1 because we are performing comparisons
-// To consider removing 'scan_push(ops, ops->next);'?
 void	scan_operation_lst(t_dlist *ops)
 {
 	int	op;

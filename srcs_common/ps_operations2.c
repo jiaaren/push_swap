@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:49:31 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/20 19:34:34 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:38:25 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ void	rb(t_dstack *stacks)
 	update_operations(stacks, RB);
 }
 
-/*
-	 double check if i really need these if statements
-*/
 void	rr(t_dstack *stacks)
 {
 	if (stacks->a)
