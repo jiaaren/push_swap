@@ -8,3 +8,6 @@ Sorting algorithms
 - Second best sorting algorithms are linearithmic/comparison sorts, e.g. merge or quick sorts.
 - There are O(n) sorting algorithms, e.g. radix sort. However, due to nature of a stack data structure, it is not possible to achieve O(n), as movements within/between stacks are merely rotation, or popping.
 
+Algorithm implemented
+- A combination of:
+   
