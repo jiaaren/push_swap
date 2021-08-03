@@ -6,7 +6,7 @@
 /*   By: jkhong <jkhong@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 14:10:37 by jkhong            #+#    #+#             */
-/*   Updated: 2021/06/22 13:42:09 by jkhong           ###   ########.fr       */
+/*   Updated: 2021/08/03 17:04:30 by jkhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,16 @@ static int	partition_a(t_dstack *stacks, int len)
 	pushed = 0;
 	while (i++ < len)
 	{
-		if (stacks->a->start->content > pivot)
+		if (stacks->a->start->content >= pivot)
 			ra(stacks);
-		else if (stacks->a->start->content < pivot)
+		else
 		{
 			pb(stacks);
 			pushed++;
 		}
-		else
-		{
-			pb(stacks);
-			rb(stacks);
-		}
 	}
 	i = 0;
-	while (i++ < (len - pushed - 1))
+	while (i++ < (len - pushed))
 		rra(stacks);
 	return (pushed);
 }
@@ -53,21 +48,16 @@ static int	partition_b(t_dstack *stacks, int len)
 	pushed = 0;
 	while (i++ < len)
 	{
-		if (stacks->b->start->content < pivot)
+		if (stacks->b->start->content <= pivot)
 			rb(stacks);
-		else if (stacks->b->start->content > pivot)
+		else
 		{
 			pa(stacks);
 			pushed++;
 		}
-		else
-		{
-			pa(stacks);
-			ra(stacks);
-		}
 	}
 	i = 0;
-	while (i++ < (len - pushed - 1))
+	while (i++ < (len - pushed))
 		rrb(stacks);
 	return (pushed);
 }
@@ -77,8 +67,6 @@ static void	merge_to_a(t_dstack *stacks, int stack_b_len)
 	int	i;
 
 	i = 0;
-	rrb(stacks);
-	pa(stacks);
 	while (i < stack_b_len)
 	{
 		pa(stacks);
@@ -91,8 +79,6 @@ static void	merge_to_b(t_dstack *stacks, int stack_a_len)
 	int	i;
 
 	i = 0;
-	rra(stacks);
-	pb(stacks);
 	while (i < stack_a_len)
 	{
 		pb(stacks);
@@ -116,15 +102,15 @@ void	quick_sort_median(t_dstack *stacks, int stack_len, char cur_stack)
 	else if (cur_stack == 'a')
 	{
 		pushed = partition_a(stacks, stack_len);
-		quick_sort_median(stacks, stack_len - pushed - 1, 'a');
+		quick_sort_median(stacks, stack_len - pushed, 'a');
 		quick_sort_median(stacks, pushed, 'b');
 		merge_to_a(stacks, pushed);
 	}
 	else
 	{
 		pushed = partition_b(stacks, stack_len);
-		quick_sort_median(stacks, stack_len - pushed - 1, 'b');
+		quick_sort_median(stacks, stack_len - pushed, 'b');
 		quick_sort_median(stacks, pushed, 'a');
 		merge_to_b(stacks, pushed);
 	}
-}	
+}
